@@ -3,4 +3,5 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile.production
+    image: azeos1101/devops-for-programmers-project-74
     command: npm test
