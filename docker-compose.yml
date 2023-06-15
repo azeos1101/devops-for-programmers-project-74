@@ -4,4 +4,18 @@ services:
       context: .
       dockerfile: ./Dockerfile.production
     image: azeos1101/devops-for-programmers-project-74
-    command: npm test
+    depends_on:
+      - db
+    command: bash -c 'sleep 3 && npm test'
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

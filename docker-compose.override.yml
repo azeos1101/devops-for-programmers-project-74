@@ -5,7 +5,15 @@ services:
       - ./app:/app
     ports:
       - 8080:8080
-    command: npm run dev
+    depends_on:
+      - db
+      - caddy
+    command: bash -c 'sleep 3 && npm start'
+  db:
+    image: postgres
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql/data
   caddy:
     image: caddy:latest
     restart: unless-stopped
@@ -14,3 +22,6 @@ services:
       - 443:443
     volumes:
       - $PWD/services/caddy/Caddyfile:/etc/caddy/Caddyfile
+
+volumes:
+  pgdata:
