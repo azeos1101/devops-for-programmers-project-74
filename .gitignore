@@ -1,5 +1,2 @@
-/.storage/*
 .env
-
-
-!/.storage/.keep
+node_modules

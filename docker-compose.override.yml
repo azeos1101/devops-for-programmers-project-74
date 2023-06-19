@@ -1,27 +1,26 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     volumes:
       - ./app:/app
     ports:
       - 8080:8080
-    depends_on:
-      - db
-      - caddy
-    command: bash -c 'sleep 3 && npm start'
-  db:
-    image: postgres
-    restart: unless-stopped
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    command: bash -c 'npm run dev'
   caddy:
     image: caddy:latest
     restart: unless-stopped
+    depends_on:
+      - app
     ports:
       - 80:80
       - 443:443
     volumes:
       - $PWD/services/caddy/Caddyfile:/etc/caddy/Caddyfile
-
-volumes:
-  pgdata:
+  # Dummy DB service to override unused postgres db in Dev env.
+  db:
+    image: alpine:latest
+    command: "true"
+    restart: no
+    entrypoint: "true"
