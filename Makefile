@@ -2,7 +2,7 @@ setup:
 	docker-compose run --rm app npm ci
 
 start:
-	docker-compose -f docker-compose.yml up
+	docker-compose -f docker-compose.yml run app npm run start
 
 dev:
 	docker-compose up
