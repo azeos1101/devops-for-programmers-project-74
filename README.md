@@ -39,6 +39,6 @@ make start # run server in production environment
 Deploy runs automatically on each push to the 'main' branch.
 It creates a new build for the 'latest' tag every time the tests succeed.
 
-[Image in Dockerhub](https://hub.docker.com/repository/docker/azeos1101/devops-for-programmers-project-74/general)
+[Image in Dockerhub](https://hub.docker.com/r/azeos1101/devops-for-programmers-project-74/tags)
 
 ---
