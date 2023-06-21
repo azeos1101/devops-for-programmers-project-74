@@ -24,5 +24,4 @@ services:
   db:
     image: alpine:latest
     command: "true"
-    restart: no
     entrypoint: "true"
