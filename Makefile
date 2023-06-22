@@ -1,5 +1,7 @@
 prepare-env:
-	cp -n .env.example .env
+	@if [ ! -f "$(PWD)/.env" ]; then \
+		cp -n .env.example .env; \
+	fi
 
 setup: prepare-env
 	docker-compose run --rm app npm ci
