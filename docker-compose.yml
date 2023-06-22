@@ -6,6 +6,11 @@ services:
       context: .
       dockerfile: ./Dockerfile.production
     image: azeos1101/devops-for-programmers-project-74
+    environment:
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
     depends_on:
       - db
     command: bash -c 'sleep 3 && npm test'
