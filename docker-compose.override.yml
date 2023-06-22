@@ -20,8 +20,3 @@ services:
       - 443:443
     volumes:
       - $PWD/services/caddy/Caddyfile:/etc/caddy/Caddyfile
-  # Dummy DB service to override unused postgres db in Dev env.
-  db:
-    image: alpine:latest
-    command: "true"
-    entrypoint: "true"

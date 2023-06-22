@@ -1,4 +1,7 @@
-setup:
+prepare-env:
+	cp -n .env.example .env
+
+setup: prepare-env
 	docker-compose run --rm app npm ci
 
 start:
